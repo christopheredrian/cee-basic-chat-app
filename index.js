@@ -35,10 +35,9 @@ io.on('connection', function(socket){
 
     socket.on('disconnect', function(reason){
       console.log('user disconnected reason: ' +  reason);
-        var onlineNn = getOnlineNicknames();
+      var onlineNn = getOnlineNicknames();
       io.emit('user sync', JSON.stringify(onlineNn));
-      
-    //   io.emit('user disconnect', socket.nickname)
+      io.emit('user disconnect', socket.nickname)
     });
 
     // socket.on('user disconnect', function(nickname){

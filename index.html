@@ -21,6 +21,10 @@
       .user-connected {
           color: green;
       }
+
+      .user-disconnected {
+          color: red;
+      }
     </style>
   </head>
   <body>
@@ -91,14 +95,9 @@
         })
 
         socket.on('user disconnect', function(nickname){
-        console.log('user disconnected' + nickname);
-        var usersList = $('usersList');
-        for(var i in usersList){
-            if(usersList(i) === nickname){
-                usersList(i).removeNode();
-            }
-        }
-    });
+            $('#messages').append($('<li>').html('<span class="user-disconnected">' + nickname + ' has disconnected' + '</span>'));
+            console.log(nickname + 'Disconnected');
+        });
       
     });
     });
